@@ -1,0 +1,27 @@
+name: "CUDA"
+num_alm: 250540
+num_ff: 1002160
+num_bram: 2133
+num_dsp: 1688
+vendor: "gpu"
+bit_width: 32
+ops {
+  op: "Input"
+  op: "Conv2D"
+  op: "MaxPool2D"
+  op: "LeakyRelu"
+  op: "Shortcut"
+  op: "Pad"
+  op: "ConcatV2"
+  op: "Relu"
+  op: "Relu6"
+  op: "Mean"
+  op: "FakeQuant"
+  op: "FakeMinMax"
+  op: "Softmax"
+  op: "AvgPool"
+  op: "FullyConnected"
+  op: "Conv2DBackpropInput"
+  op: "Upsample"
+  op: "KLD"
+}
