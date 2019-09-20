@@ -38,7 +38,7 @@ def print_variables(vars,filter=None):
             vars_f = ["{}:{}".format(v.name[:-2], v.shape) for v in vars if re.match(filter,v.name[:-2])]
         else:
             vars_f = ["{}:{}".format(v.name[:-2], v.shape) for v in vars]
-        print("Variable:\n\t{}".format("\n\t".join(vars_f)))
+        print("Printing Variable:\n\t{}".format("\n\t".join(vars_f)))
 
 
 

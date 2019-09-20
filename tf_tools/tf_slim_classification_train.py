@@ -50,6 +50,9 @@ tf.app.flags.DEFINE_integer('num_clones', 1,
 tf.app.flags.DEFINE_boolean('clone_on_cpu', False,
                             'Use CPUs to deploy clones.')
 
+tf.app.flags.DEFINE_boolean('log_quant_grad', False,
+                            'whether summary gradient of quant.')
+
 tf.app.flags.DEFINE_integer('worker_replicas', 1, 'Number of worker replicas.')
 
 tf.app.flags.DEFINE_integer(
@@ -268,6 +271,18 @@ tf.app.flags.DEFINE_string('excluded_scopes', None,
 
 tf.app.flags.DEFINE_string('pbtxt', None, 'pbtxt for model')
 
+tf.app.flags.DEFINE_float(
+    'scale_factor', 100,
+    "scale update factor to model weight while retrain.")
+
+tf.app.flags.DEFINE_float(
+    'scale_factor', 100,
+    "scale update factor to model weight while retrain.")
+
+tf.app.flags.DEFINE_float(
+    'zero_point_factor', 256,
+    "zp update factor to model weight while retrain.")
+
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -419,15 +434,26 @@ def _get_init_fn():
                       for scope in FLAGS.checkpoint_exclude_scopes.split(',')]
     variables_to_restore = []
     # for var in slim.get_model_variables():
-    for var in slim.get_model_variables():
-        for exclusion in exclusions:
-            if var.op.name.startswith(exclusion):
-                break
-        variables_to_restore.append(var)
+
+
     if FLAGS.checkpoint_from_ema:
+        for var in slim.get_model_variables():
+            for exclusion in exclusions:
+                if var.op.name.startswith(exclusion):
+                    break
+            variables_to_restore.append(var)
         ema = tf.train.ExponentialMovingAverage(
                 FLAGS.moving_average_decay)
         variables_to_restore = ema.variables_to_restore(variables_to_restore)
+    else:
+        for var in tf.global_variables():
+            for exclusion in exclusions:
+                if var.op.name.startswith(exclusion):
+                    break
+            variables_to_restore.append(var)
+
+    print_variables(variables_to_restore)
+
 
     tf.logging.info('Fine-tuning from %s' % checkpoint_path)
 
@@ -459,9 +485,6 @@ def main(_):
         # Create global_step
         with tf.device(deploy_config.variables_device()):
             global_step = slim.create_global_step()
-
-
-
 
         #####################
         # Select the dataset#
@@ -575,7 +598,9 @@ def main(_):
                 freeze_bn_epoch=FLAGS.freeze_bn_epoch,
                 freeze_quant_epoch=FLAGS.freeze_quant_epoch,
                 num_samples=FLAGS.num_samples,
-                batch_size=FLAGS.batch_size)
+                batch_size=FLAGS.batch_size,
+                zero_point_factor=FLAGS.zero_point_factor,
+                scale_factor=FLAGS.scale_factore)
 
         #########################################
         # Configure the optimization procedure. #
@@ -597,6 +622,7 @@ def main(_):
                 total_num_replicas=FLAGS.worker_replicas,
                 variable_averages=variable_averages,
                 variables_to_average=moving_average_variables)
+            tf.trainable_variables()
 
         # add update of ema each training step
         elif FLAGS.moving_average_decay:
@@ -615,6 +641,14 @@ def main(_):
             var_list=variables_to_train)
         # Add total_loss to summary.
         summaries.add(tf.summary.scalar('total_loss', total_loss))
+
+        if FLAGS.log_quant_grad:
+            for (grad,var) in clones_gradients:
+                if grad is None:
+                    tf.logging.warning("Variable %s has None grad." % var.name)
+                if "scale" in var.name or "zero_point" in var.name:
+                    summaries.add(tf.summary.histogram("quant_grads/%s" % var.name[:-2] ,grad))
+
 
         # Create gradient updates.
         grad_updates = optimizer.apply_gradients(clones_gradients,
@@ -650,6 +684,7 @@ def main(_):
                 save_summaries_secs=FLAGS.save_summaries_secs,
                 save_interval_secs=FLAGS.save_interval_secs,
                 sync_optimizer=optimizer if FLAGS.sync_replicas else None,)
+
 
         except tf.errors.OutOfRangeError:
             tf.logging.info("Training process done.")

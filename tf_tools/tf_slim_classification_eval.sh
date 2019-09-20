@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
-export CUDA_VISIBLE_DEVICES=3
+export CUDA_VISIBLE_DEVICES=2
 export PYTHONPATH="../crquant-slim:..:$PYTHONPATH"
 export PYTHONPATH="/home/yx-wan/newhome/workspace/retrainquant:/home/yx-wan/newhome/coco/tools/cocoapi/PythonAPI:$PYTHONPATH"
 PBTXT="/home/yx-wan/nas/BenchmarkData/rainbuilder/tf_sgir_1.4.2_kld/resnet_v1_50_gpu/quant/resnet_v50_quant_sg.pbtxt"
 
 
 python tf_slim_classification_eval.py \
---batch_size 4 \
---checkpoint_path  /home/yx-wan/newhome/checkpoint/quant/resnet50_v1_50_quant \
+--batch_size 8 \
+--checkpoint_path  /home/yx-wan/newhome/checkpoint/quant/resnet50_EMA_train \
 --model_name resnet_v1_50 \
 --preprocessing_name resnet_v1_50 \
 --dataset_dir /home/yx-wan/newhome/Imagenet/val_no_resize \
 --labels_offset 1 \
---eval_dir /home/yx-wan/newhome/checkpoint/quant/resnet50_v1_50_quant/eval_ema_log \
---pbtxt $PBTXT \
+--eval_dir /home/yx-wan/newhome/checkpoint/quant/resnet50_EMA_train/eval_no_ema_log \
 --crquant True \
+--pbtxt $PBTXT \
 --wait_for_checkpoints True \
---gpu_memory_fraction 0.2
+--gpu_memory_fraction 0.3
 
-
+#--pbtxt $PBTXT \
 #--moving_average_decay 0.9999
-
+#--wait_for_checkpoints True \
 #--ignore_missing_vars False \
 #--moving_average_decay 0.9999 \
 #--wait_for_checkpoints True

@@ -14,6 +14,7 @@ import numpy as np
 from tensorflow.python import pywrap_tensorflow
 from tensorflow.python.platform import app
 from tensorflow.python.platform import flags
+from re import match
 
 FLAGS = None
 
@@ -44,7 +45,7 @@ def _count_total_params(reader, count_exclude_pattern=""):
 
 def print_tensors_in_checkpoint_file(file_name, tensor_name, all_tensors,
                                      all_tensor_names=False,
-                                     count_exclude_pattern=""):
+                                     count_exclude_pattern="",name_regex = None):
   """Prints tensors in a checkpoint file.
   If no `tensor_name` is provided, prints the tensor names and shapes
   in the checkpoint file.
@@ -61,9 +62,10 @@ def print_tensors_in_checkpoint_file(file_name, tensor_name, all_tensors,
     if all_tensors or all_tensor_names:
       var_to_shape_map = reader.get_variable_to_shape_map()
       for key in sorted(var_to_shape_map):
-        print("tensor_name: ", key)
-        if all_tensors:
-          print(reader.get_tensor(key))
+        if match(name_regex,key):
+            print("tensor_name: ", key)
+            if all_tensors:
+              print(reader.get_tensor(key))
     elif not tensor_name:
       print(reader.debug_string().decode("utf-8"))
     else:
@@ -122,15 +124,15 @@ def main(unused_argv):
   if not FLAGS.file_name:
     print("Usage: inspect_checkpoint --file_name=checkpoint_file_name "
           "[--tensor_name=tensor_to_print] "
+          "[--name_pattern=regex] "
           "[--all_tensors] "
-          "[--all_tensor_names] "
-          "[--printoptions]")
+          "[--all_tensor_names] ")
     sys.exit(1)
   else:
     print_tensors_in_checkpoint_file(
         FLAGS.file_name, FLAGS.tensor_name,
         FLAGS.all_tensors, FLAGS.all_tensor_names,
-        count_exclude_pattern=FLAGS.count_exclude_pattern)
+        count_exclude_pattern=FLAGS.count_exclude_pattern,name_regex = FLAGS.name_pattern)
 
 
 if __name__ == "__main__":
@@ -144,15 +146,20 @@ if __name__ == "__main__":
       "Note, if using Checkpoint V2 format, file_name is the "
       "shared prefix between all files in the checkpoint.")
   parser.add_argument(
-      "--tensor_name",
-      type=str,
-      default="",
-      help="Name of the tensor to inspect")
-  parser.add_argument(
       "--count_exclude_pattern",
       type=str,
       default="",
-      help="Pattern to exclude tensors, e.g., from optimizers, when counting.")
+      help="Regex string, pattern to exclude tensors when count.")
+  parser.add_argument(
+      "--name_pattern",
+        type=str,
+        default=None,
+        help = "regex for match name of var")
+  parser.add_argument(
+      "--tensor_name",
+      type=str,
+      default="",
+      help="Tensor name to print.")
   parser.add_argument(
       "--all_tensors",
       nargs="?",
@@ -172,5 +179,7 @@ if __name__ == "__main__":
       nargs="*",
       type=parse_numpy_printoption,
       help="Argument for numpy.set_printoptions(), in the form 'k=v'.")
+
+
   FLAGS, unparsed = parser.parse_known_args()
   app.run(main=main, argv=[sys.argv[0]] + unparsed)

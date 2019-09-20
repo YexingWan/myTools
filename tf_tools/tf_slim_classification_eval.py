@@ -162,18 +162,16 @@ def main(_):
         dataset = dataset.batch(FLAGS.batch_size)
         dataset = dataset.repeat()
         iterator = dataset.make_one_shot_iterator()
-        iterator = dataset.make_one_shot_iterator()
         images, labels = iterator.get_next()
 
         ######################
         # build prediction op#
         ######################
-        # initialize all variable
-        init = tf.global_variables_initializer()
-        sess.run(init)
+
         # input_place_holder = tf.placeholder(tf.float32,(None,input_size,input_size,3),"input")
         logits, _ = network_fn(images)
         predictions = tf.argmax(logits, 1)
+        # now origin graph is constructed
 
 
         #############
@@ -205,28 +203,33 @@ def main(_):
         ############################
         if FLAGS.crquant:
             import crquant
-            g = tf.get_default_graph()
             crquant.create_graph(
-                input_graph=g,
                 pbtxt_path=FLAGS.pbtxt,
                 is_training=False)
+
+            quant_var = _get_quant_variable_from_model()
+
+            summary_wirter = tf.summary.FileWriter(graph=tf.get_default_graph(),logdir=FLAGS.eval_dir)
+            for var in quant_var:
+                tf.summary.scalar(name = "quant/%s" % quant_var[var].name[:-2],tensor=quant_var[var])
+            merge_summary = tf.summary.merge_all()
+
+
+            # add quant var in dictionary for restore
+            if isinstance(vars, dict):
+                vars.update(quant_var)
+                print("load quant var:\n\t" + "\n\t".join(["{}:{}".format(k, v) for k, v in vars.items()]))
+
+            elif isinstance(vars, list):
+                vars.extend(list(quant_var.values()))
+                print("load quant var:\n\t" + "\n\t".join(["{}:{}".format(v.name[:-2], v) for v in vars]))
 
         ################
         # do evaluation#
         ################
-
-
-        # add quant var in dictionary if do quant
-        if FLAGS.crquant:
-            quant_var = _get_quant_variable_from_model()
-            if isinstance(vars,dict):
-                vars.update(quant_var)
-                print("load var:\n\t"+"\n\t".join(["{}:{}".format(k,v) for k,v in vars.items()]))
-
-            elif isinstance(vars,list):
-                vars.extend(list(quant_var.values()))
-                print("load var:\n\t"+"\n\t".join(["{}:{}".format(v.name[:-2],v) for v in vars]))
-
+        # initialize all variable
+        init = tf.global_variables_initializer()
+        sess.run(init)
 
         print_variables(vars)
 
@@ -236,7 +239,6 @@ def main(_):
             print("Do evaluation once.")
             # load
             # saver = tf.train.Saver(vars)
-            summary = tf.summary.FileWriter(graph=tf.get_default_graph(),logdir=FLAGS.eval_dir)
 
             if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
                 checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
@@ -253,9 +255,12 @@ def main(_):
                 ignore_missing_vars=FLAGS.ignore_missing_vars)
             assign_fn(sess)
 
-            # t_o, s_o = sess.run([t, s])
-            # print("scale:{}".format(t_o))
-            # print("scale:{}".format(s_o))
+            global_step = sess.run([tf_global_step])
+            summaries = sess.run([merge_summary])
+            for summary in summaries:
+                summary_wirter.add_summary(summary,global_step=global_step[0])
+
+
 
             # saver.restore(sess, checkpoint_path)
 
@@ -273,9 +278,9 @@ def main(_):
                 except tf.errors.OutOfRangeError:
                     print("End of dataset.")
                     break
-
-                print("p:{}".format(predictions_np))
-                print("l:{}".format(labels_np))
+                #
+                # print("p:{}".format(predictions_np))
+                # print("l:{}".format(labels_np))
 
                 labels_np = np.squeeze(labels_np)
                 predictions_np = np.squeeze(predictions_np)
