@@ -272,15 +272,11 @@ tf.app.flags.DEFINE_string('excluded_scopes', None,
 tf.app.flags.DEFINE_string('pbtxt', None, 'pbtxt for model')
 
 tf.app.flags.DEFINE_float(
-    'scale_factor', 100,
+    'scale_factor', 1,
     "scale update factor to model weight while retrain.")
 
 tf.app.flags.DEFINE_float(
-    'scale_factor', 100,
-    "scale update factor to model weight while retrain.")
-
-tf.app.flags.DEFINE_float(
-    'zero_point_factor', 256,
+    'zero_point_factor', 256*256,
     "zp update factor to model weight while retrain.")
 
 
@@ -437,7 +433,7 @@ def _get_init_fn():
 
 
     if FLAGS.checkpoint_from_ema:
-        for var in slim.get_model_variables():
+        for var in tf.global_variables():
             for exclusion in exclusions:
                 if var.op.name.startswith(exclusion):
                     break
@@ -600,7 +596,7 @@ def main(_):
                 num_samples=FLAGS.num_samples,
                 batch_size=FLAGS.batch_size,
                 zero_point_factor=FLAGS.zero_point_factor,
-                scale_factor=FLAGS.scale_factore)
+                scale_factor=FLAGS.scale_factor)
 
         #########################################
         # Configure the optimization procedure. #

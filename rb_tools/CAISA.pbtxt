@@ -1,0 +1,51 @@
+name: "RAINMAN_BOARD_NEBULA"
+num_alm: 250540
+num_ff: 1002160
+num_bram: 2133
+num_dsp: 1688
+vendor: "altera"
+bit_width: 8
+ops {
+  op: "Conv2D"
+  op: "MaxPool2D"
+  op: "Shortcut"
+  op: "LeakyRelu"
+  op: "Mean"
+  op: "Relu"
+  op: "Relu6"
+  op: "Upsample"
+  op: "ConcatV2"
+  op: "Flatten"
+  op: "FullyConnected"
+  op: "AvgPool"
+  op: "Conv2DBackpropInput"
+  op: "DepthwiseConv2D"
+}
+fusion_rule {
+  parent: "Conv2D"
+  child: "Relu"
+  child: "Relu6"
+  child: "MaxPool2D"
+  child: "LeakyRelu"
+  child: "Mean"
+  child: "Shortcut"
+  child: "Upsample"
+}
+fusion_rule {
+  parent: "FullyConnected"
+  child: "Relu"
+  child: "Relu6"
+  child: "LeakyRelu"
+}
+fusion_rule {
+  parent: "Conv2DBackpropInput"
+  child: "Relu"
+  child: "Relu6"
+  child: "LeakyRelu"
+}
+fusion_rule {
+  parent: "Shortcut"
+  child: "Relu"
+  child: "Relu6"
+  child: "LeakyRelu"
+}

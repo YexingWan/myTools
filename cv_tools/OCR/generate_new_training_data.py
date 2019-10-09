@@ -1,4 +1,4 @@
-from preprocess import shapen,extract_rect_zone
+from ..preprocess import shapen,extract_rect_zone
 from collections import defaultdict
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import string

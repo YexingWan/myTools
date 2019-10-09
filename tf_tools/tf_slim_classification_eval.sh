@@ -1,29 +1,58 @@
 #!/usr/bin/env bash
+
+
+MODEL='inception_v3'
+echo "Evaluating model: ${MODEL}"
 export CUDA_VISIBLE_DEVICES=2
 export PYTHONPATH="../crquant-slim:..:$PYTHONPATH"
-export PYTHONPATH="/home/yx-wan/newhome/workspace/retrainquant:/home/yx-wan/newhome/coco/tools/cocoapi/PythonAPI:$PYTHONPATH"
-PBTXT="/home/yx-wan/nas/BenchmarkData/rainbuilder/tf_sgir_1.4.2_kld/resnet_v1_50_gpu/quant/resnet_v50_quant_sg.pbtxt"
+export PYTHONPATH="${HOME}/newhome/workspace/retrainquant:${HOME}/newhome/coco/tools/cocoapi/PythonAPI:$PYTHONPATH"
+PBTXT="${HOME}/newhome/workspace/myTools/rb_tools/${MODEL}/quant/${MODEL}_quant_sg.pbtxt"
+#PBTXT="/nas/BenchmarkData/rainbuilder/tf_sgir_1.4.2_kld/resnet_v1_50_gpu/quant/resnet_v50_quant_sg.pbtxt"
+
+CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/${MODEL}.ckpt"
+#CHECKPOINT_PATH="/home/yx-wan/newhome/checkpoint/inception_resnet_v2/restored"
+
+
+EVAL_DIR="${HOME}/newhome/checkpoint/${MODEL}/eval_quant_log"
+DATASET="${HOME}/newhome/Imagenet/val_no_resize"
+
 
 
 python tf_slim_classification_eval.py \
---batch_size 8 \
---checkpoint_path  /home/yx-wan/newhome/checkpoint/quant/resnet50_EMA_train \
---model_name resnet_v1_50 \
---preprocessing_name resnet_v1_50 \
---dataset_dir /home/yx-wan/newhome/Imagenet/val_no_resize \
---labels_offset 1 \
---eval_dir /home/yx-wan/newhome/checkpoint/quant/resnet50_EMA_train/eval_no_ema_log \
---crquant True \
---pbtxt $PBTXT \
---wait_for_checkpoints True \
---gpu_memory_fraction 0.3
+--batch_size 32 \
+--checkpoint_path ${CHECKPOINT_PATH} \
+--model_name ${MODEL} \
+--preprocessing_name ${MODEL} \
+--dataset_dir ${DATASET} \
+--eval_dir ${EVAL_DIR} \
+--pbtxt ${PBTXT} \
+--excluded_scopes 'InceptionV3/AuxLogits' \
+--ignore_missing_vars True \
+--crquant True
 
+
+#--labels_offset 1 \
+#--scale_factor 100 \
+
+#--eval_dir ${HOME}/newhome/workspace/myTools/rb_tools/${MODEL}/quant/eval_quant_event \
+#--excluded_scopes 'InceptionV3/AuxLogits' \
+#--ignore_missing_vars True \
 #--pbtxt $PBTXT \
+#--crquant True
+
+
+#
+#
+#--pbtxt $PBTXT \
+#--crquant True \
+#--pbtxt $PBTXT \
+#--wait_for_checkpoints True
+
+
 #--moving_average_decay 0.9999
 #--wait_for_checkpoints True \
 #--ignore_missing_vars False \
 #--moving_average_decay 0.9999 \
-#--wait_for_checkpoints True
 #--pbtxt $PBTXT \
 #--crquant True \
 #--moving_average_decay 0.9999 \

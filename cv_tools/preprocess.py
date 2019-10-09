@@ -1,15 +1,56 @@
 import os,sys, logging
 sys.path.append("./")
+sys.path.append("../")
 import cv2
 import numpy as np
 
 
-def resize_img(img, h_resize, w_resize):
+def resize_img(img, height, width,inter = cv2.INTER_AREA):
     h, w, _ = img.shape
-    ratio_h = h_resize / float(h)
-    ratio_w = w_resize / float(w)
-    img = cv2.resize(img, (w_resize, h_resize), interpolation=cv2.INTER_LINEAR)
+    ratio_h = height / float(h)
+    ratio_w = width / float(w)
+    img = cv2.resize(img, (width, height), interpolation=inter)
     return img, ratio_h, ratio_w
+
+
+def resize_img_short_edge(img, short_edge:int, inter = cv2.INTER_AREA):
+    h, w, _ = img.shape
+    if h > w:
+        return resize_img_keep_ratio(img,width=short_edge,inter=inter)
+    else:
+        return resize_img_keep_ratio(img,height=short_edge,inter=inter)
+
+
+
+def resize_img_keep_ratio(img,height = None, width = None,  inter = cv2.INTER_AREA):
+    # initialize the dimensions of the image to be resized and
+    # grab the image size
+    h, w, _ = img.shape
+
+    # if both the width and height are None, then return the
+    # original image
+    if width is None and height is None:
+        return img
+
+    # check to see if the width is None
+    if width is None:
+        # calculate the ratio of the height and construct the
+        # dimensions
+        r = height / float(h)
+        dim = (int(w * r), height)
+
+    # otherwise, the height is None
+    else:
+        # calculate the ratio of the width and construct the
+        # dimensions
+        r = width / float(w)
+        dim = (width, int(h * r))
+
+    # resize the image
+    resized,ratio_h, ratio_w =resize_img(img, dim[1],dim[0], inter = inter)
+
+    # return the resized image
+    return resized,ratio_h, ratio_w
 
 
 def crop(img, crop):
@@ -21,7 +62,7 @@ def crop(img, crop):
 
     return img
 
-
+# Gamma correction to input image
 def gamma(img, gamma=0.2):
     lookUpTable = np.empty((1, 256), np.uint8)
     for i in range(256):
@@ -53,6 +94,7 @@ def slice_otsu(img,num_slice_x,num_slice_y):
             img[y*slice_h:y_tail, x*slice_w:x_tail] = cv2.threshold(img[y*slice_h:y_tail, x*slice_w:x_tail], 0, 255, cv2.THRESH_OTSU)[1]
     return img
 
+
 # specify loader for ORC project
 def extract_rect_zone(dir: str,ratio:float):
     files = []
@@ -67,8 +109,8 @@ def extract_rect_zone(dir: str,ratio:float):
     for i, f in enumerate(files):
         img = cv2.imread(f)
 
-        # do crop, convert to gray, blur
-        img = crop(img, crop=[500, 100, 500, 100])
+        # # do crop, convert to gray, blur
+        # img = crop(img, crop=[500, 100, 500, 100])
 
         tem_img = img.astype(np.int)
         # logging.debug(img)
@@ -93,6 +135,8 @@ def extract_rect_zone(dir: str,ratio:float):
 
         contours = cv2.findContours(gray_img_2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
         # print(contours)
+
+        # get max area contour area
         max_index = np.argmax([cv2.contourArea(c) for c in contours])
         contours[max_index] = cv2.convexHull(contours[max_index])
         rect = cv2.minAreaRect(cv2.approxPolyDP(contours[max_index], 10, True))
@@ -145,8 +189,42 @@ def extract_rect_zone(dir: str,ratio:float):
 
         yield box_s, f, img, result
 
-for _,_,_,_ in extract_rect_zone(dir = "/home/kevin/workspace/pycharm-remote/Corerain/myTools/cv_tools/test_crop_rotate",ratio=1.3):
-    pass
+
+import os
+import cv2
+import numpy as np
+
+ALLOW_IMG = ('.jpg', '.JPEG', '.png')
+
+def generate_img_inception(imgdir):
+    for (dirpath, dirnames, filenames) in os.walk(imgdir):
+        for file in filenames:
+            ext = os.path.splitext(file)[-1]
+            if ext not in ALLOW_IMG: continue
+            img_path = os.path.join(dirpath, file)
+            img = inception_preprocess(img_path)
+            # Add batch dimension.
+            img = np.expand_dims(img, 0)
+
+            yield file,img
+
+
+def inception_preprocess(img):
+    img = cv2.imread(img)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img_h, img_w, channel = img.shape
+
+    central_fraction = 0.875
+    y = int((img_h - img_h * central_fraction) / 2)
+    x = int((img_w - img_w * central_fraction) / 2)
+    h = img_h - 2 * y
+    w = img_w - 2 * x
+
+    crop_img = img[y:y + h, x:x + w] / 255
+    re_img = (cv2.resize(crop_img, (299, 299)) - 0.5) * 2
+
+    return re_img
+
 
 
 

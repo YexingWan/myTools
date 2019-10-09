@@ -1,36 +1,69 @@
 #!/usr/bin/env bash
 
-export CUDA_VISIBLE_DEVICES=3
+
+MODEL='inception_v3'
+echo "Training model: ${MODEL}"
+export CUDA_VISIBLE_DEVICES=2
 export PYTHONPATH="../crquant-slim:..:$PYTHONPATH"
-export PYTHONPATH="/home/yx-wan/newhome/workspace/retrainquant:/home/yx-wan/newhome/coco/tools/cocoapi/PythonAPI:$PYTHONPATH"
-PBTXT="/home/yx-wan/nas/BenchmarkData/rainbuilder/tf_sgir_1.4.2_kld/resnet_v1_50_gpu/quant/resnet_v50_quant_sg.pbtxt"
+export PYTHONPATH="${HOME}/newhome/workspace/retrainquant:${HOME}/newhome/coco/tools/cocoapi/PythonAPI:$PYTHONPATH"
+PBTXT="${HOME}/newhome/workspace/myTools/rb_tools/${MODEL}/quant/${MODEL}_quant_sg.pbtxt"
+CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/${MODEL}.ckpt"
+#CHECKPOINT_PATH="/home/yx-wan/newhome/checkpoint/inception_resnet_v2/restored"
+TRAIN_DIR="${HOME}/newhome/checkpoint/quant/${MODEL}"
+DATASET="${HOME}/newhome/Imagenet/train_no_resize"
+
 
 python tf_slim_classification_train.py \
-    --crquant True \
-    --train_dir /home/yx-wan/newhome/checkpoint/quant/resnet50_EMA_train \
-    --save_interval_secs 300 \
-    --save_summaries_secs 300 \
+    --train_dir $TRAIN_DIR \
     --weight_decay 0.0001 \
     --optimizer adam \
     --learning_rate 0.000001 \
-    --learning_rate_decay_factor 0.9 \
+    --learning_rate_decay_factor 0.94 \
     --learning_rate_decay_type exponential \
     --num_epochs_per_decay 1 \
-    --dataset_dir /home/yx-wan/newhome/Imagenet/train_no_resize \
-    --labels_offset 1 \
-    --model_name resnet_v1_50 \
-    --batch_size 16 \
-    --number_epochs 10 \
-    --checkpoint_path ~/newhome/checkpoint/quant/resnet50_EMA_calibration_1000/model.ckpt-1000 \
-    --freeze_bn_epoch 3 \
-    --freeze_quant_epoch 8 \
-    --log_quant_grad True \
+    --dataset_dir ${DATASET} \
+    --checkpoint_path ${CHECKPOINT_PATH} \
+    --model_name ${MODEL} \
+    --preprocessing_name ${MODEL} \
+    --batch_size 32 \
+    --num_clones 1 \
     --pbtxt $PBTXT \
+    --scale_factor 100 \
+    --crquant True \
+    --freeze_bn_epoch 5 \
+    --freeze_quant_epoch 10 \
+    --number_epochs 15 \
+    --ignore_missing_vars True \
+    --save_interval_secs 1200 \
+    --save_summaries_secs 600 \
+    --excluded_scopes 'InceptionV3/AuxLogits/' \
     --end_learning_rate 0
 
+
+#    --labels_offset 1 \
+
+#    --variables_scope_replace_dict_keys 'clone_[0-9]+/' \
+#    --excluded_scopes 'InceptionV3/AuxLogits/' \
+#    --excluded_scopes_split ',' \
+
+#    --pbtxt $PBTXT \
+#    --ignore_missing_vars True
+#    --checkpoint_path /home/yx-wan/newhome/checkpoint/resnet_v1_50/resnet_v1_50.ckpt \
+#    --freeze_bn_epoch 5 \
+#    --freeze_quant_epoch 7 \
+#    --pbtxt $PBTXT \
+#    --scale_factor 100 \
+#    --crquant True \
+#    --train_dir /home/yx-wan/newhome/checkpoint/quant/resnet50_KLD_right_augmentation \
+#    --save_interval_secs 1200 \
+#    --save_summaries_secs 600 \
+
+
+
+#    --scale_factor 100 \
 #    --moving_average_decay 0.9999
+#    --checkpoint_from_ema True
 #    --ignore_missing_vars True \
-#--checkpoint_from_ema True
 #    --log_quant_grad True \
 #    --calibration_step 1000 \
 #    --max_number_of_steps 1000 \

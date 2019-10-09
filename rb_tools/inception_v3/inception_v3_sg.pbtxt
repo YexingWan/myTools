@@ -1,0 +1,11771 @@
+name: "inception_v3"
+version: "v2"
+node {
+  name: "Placeholder"
+  op: "Input"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 1
+        i: 299
+        i: 299
+        i: 3
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 32
+        i: 3
+        i: 3
+        i: 3
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 32
+        i: 3
+        i: 3
+        i: 32
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 3
+        i: 3
+        i: 32
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 80
+        i: 1
+        i: 1
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 3
+        i: 3
+        i: 80
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 48
+        i: 1
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 32
+        i: 1
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 5
+        i: 5
+        i: 48
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 256
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 48
+        i: 1
+        i: 1
+        i: 256
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 256
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 256
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 5
+        i: 5
+        i: 48
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 288
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 48
+        i: 1
+        i: 1
+        i: 288
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 288
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 288
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 5
+        i: 5
+        i: 48
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 3
+        i: 3
+        i: 288
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+        i: 1
+        i: 1
+        i: 288
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+        i: 3
+        i: 3
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+        i: 1
+        i: 7
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+        i: 7
+        i: 1
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 7
+        i: 1
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+        i: 1
+        i: 7
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+        i: 7
+        i: 1
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 7
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 7
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 7
+        i: 1
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 7
+        i: 1
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 7
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 7
+        i: 1
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 7
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 7
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 7
+        i: 1
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 7
+        i: 1
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 1
+        i: 7
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+        i: 7
+        i: 1
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 7
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 7
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 7
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 7
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 7
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 7
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 7
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 768
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 320
+        i: 3
+        i: 3
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 7
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 7
+        i: 1
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 3
+        i: 3
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 320
+        i: 1
+        i: 1
+        i: 1280
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 1
+        i: 1
+        i: 1280
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 448
+        i: 1
+        i: 1
+        i: 1280
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 1280
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 1
+        i: 3
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 3
+        i: 1
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 3
+        i: 3
+        i: 448
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 1
+        i: 3
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 3
+        i: 1
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 320
+        i: 1
+        i: 1
+        i: 2048
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 1
+        i: 1
+        i: 2048
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 448
+        i: 1
+        i: 1
+        i: 2048
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+        i: 1
+        i: 1
+        i: 2048
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 1
+        i: 3
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 3
+        i: 1
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 3
+        i: 3
+        i: 448
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 1
+        i: 3
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+        i: 3
+        i: 1
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/Logits/Conv2d_1c_1x1/Conv2D_weights"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 1001
+        i: 1
+        i: 1
+        i: 2048
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/Logits/Conv2d_1c_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 1001
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 32
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 32
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 80
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 48
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 32
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 48
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 48
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 64
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 96
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 128
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 160
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 320
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 320
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 448
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 320
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 448
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 192
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Conv2D_bias"
+  op: "Const"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "shape"
+    value {
+      list {
+        i: 384
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Conv2D"
+  input: "Placeholder"
+  input: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 32
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Conv2d_1a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 32
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Conv2d_2a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/MaxPool_3a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Conv2d_2b_3x3/Relu"
+  op: "MaxPool2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/MaxPool_3a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 80
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Conv2d_3b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/MaxPool_5a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Conv2d_4a_3x3/Relu"
+  op: "MaxPool2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/MaxPool_5a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/MaxPool_5a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 48
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/MaxPool_5a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/MaxPool_5a_3x3/MaxPool"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 32
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 5
+        i: 5
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 2
+        i: 2
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_1/Conv2d_0b_5x5/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_2/Conv2d_0c_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5b/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 48
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_5b/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 5
+        i: 5
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 2
+        i: 2
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_1/Conv_1_0c_5x5/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_2/Conv2d_0c_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5c/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 48
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_5c/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 5
+        i: 5
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 2
+        i: 2
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_5d/concat"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_1/Conv2d_0b_5x5/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_2/Conv2d_0c_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_5d/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5d/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_5d/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 64
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_2/MaxPool_1a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Mixed_5d/concat"
+  op: "MaxPool2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 96
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_0/Conv2d_1a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_1/Conv2d_1a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6a/Branch_2/MaxPool_1a_3x3/MaxPool"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 128
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 128
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6a/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 128
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 128
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 128
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 128
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6b/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6b/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6c/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6c/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 160
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6d/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6d/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6d/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6d/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0b_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0c_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0d_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_6e/concat"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_2/Conv2d_0e_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_6e/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_6e/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_2/MaxPool_1a_3x3/MaxPool"
+  input: "InceptionV3/InceptionV3/Mixed_6e/concat"
+  op: "MaxPool2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 320
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 7
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0b_1x7/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 7
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 3
+        i: 3
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_0c_7x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 2
+        i: 2
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_0/Conv2d_1a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_1/Conv2d_1a_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7a/Branch_2/MaxPool_1a_3x3/MaxPool"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 320
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7a/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 448
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_7a/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_1/Conv2d_0b_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0c_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_2/Conv2d_0d_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7b/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 320
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7b/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 448
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_7b/concat"
+  op: "AvgPool"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/AvgPool_0a_3x3/AvgPool"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 192
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 3
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Conv2D"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0b_3x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Conv2D_weights"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 384
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 3
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Conv2D"
+  op: "Relu"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "type"
+    value {
+      s: "Relu"
+    }
+  }
+}
+node {
+  name: "InceptionV3/InceptionV3/Mixed_7c/concat"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_0/Conv2d_0a_1x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0b_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_1/Conv2d_0c_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0c_1x3/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_2/Conv2d_0d_3x1/Relu"
+  input: "InceptionV3/InceptionV3/Mixed_7c/Branch_3/Conv2d_0b_1x1/Relu"
+  op: "ConcatV2"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "axis"
+    value {
+      i: 3
+    }
+  }
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+}
+node {
+  name: "InceptionV3/Logits/AvgPool_1a_8x8/AvgPool/toMean"
+  input: "InceptionV3/InceptionV3/Mixed_7c/concat"
+  op: "Mean"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "reduce_axes"
+    value {
+      list {
+        i: 1
+        i: 2
+      }
+    }
+  }
+}
+node {
+  name: "InceptionV3/Logits/Conv2d_1c_1x1/Conv2D"
+  input: "InceptionV3/Logits/AvgPool_1a_8x8/AvgPool/toMean"
+  input: "InceptionV3/Logits/Conv2d_1c_1x1/Conv2D_weights"
+  input: "InceptionV3/Logits/Conv2d_1c_1x1/Conv2D_bias"
+  op: "Conv2D"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "data_format"
+    value {
+      s: "0,2,3,1"
+    }
+  }
+  attr_map {
+    key: "depth"
+    value {
+      i: 1001
+    }
+  }
+  attr_map {
+    key: "dilation_rate"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "kernel_size"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "pad_size"
+    value {
+      list {
+        i: 0
+        i: 0
+        i: 0
+        i: 0
+      }
+    }
+  }
+  attr_map {
+    key: "stride"
+    value {
+      list {
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr_map {
+    key: "use_bias"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "InceptionV3/Predictions/Softmax"
+  input: "InceptionV3/Logits/Conv2d_1c_1x1/Conv2D"
+  op: "Softmax"
+  device: CPU
+  type: T_FLOAT
+  attr_map {
+    key: "is_output"
+    value {
+      b: true
+    }
+  }
+  attr_map {
+    key: "output_shape"
+    value {
+      list {
+        i: 1
+        i: 1001
+      }
+    }
+  }
+}

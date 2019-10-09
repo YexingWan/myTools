@@ -114,6 +114,7 @@ static/results
 # model impliment
 /models_torch
 /models_tensorflow
+/pretrained-models.pytorch
 
 */origin_data
 */models

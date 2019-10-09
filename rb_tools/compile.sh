@@ -1,27 +1,17 @@
 #!/bin/bash
+export CUDA_VISIBLE_DEVICES=-1
+OUTPUT_NODE="InceptionResnetV2/Logits/Logits/BiasAdd"
+LOGDIR_NAME="graph_vis"
+MODEL_NAME="inception_resnet_v2"
+RESTORED_DIR="/home/yx-wan/newhome/checkpoint/${MODEL_NAME}/restored"
 
-OUTPUT_NODE="feature_fusion/Conv_7/BiasAdd,feature_fusion/Conv_8/BiasAdd,feature_fusion/Conv_9/BiasAdd"
-LOGDIR="./graph_vis/"
-MODEL_NAME="EAST"
-
-python3 restore.py
-
-echo Restoring model...
-if test $? -ne 0; then
-    echo Restore fail.
-    exit 1
-fi
+mkdir "./$MODEL_NAME"
 
 echo Freezing model...
-RbCli freeze ./restored/ -o $OUTPUT_NODE --logdir $LOGDIR
+RbCli freeze "$RESTORED_DIR" -o $OUTPUT_NODE --logdir "./$MODEL_NAME" -m "./$MODEL_NAME/$MODEL_NAME.pb"
 
 echo Parse model to SG-IR...
-RbCli sg -n $MODEL_NAME --with-json True --with-coeff True ./model.pb
+RbCli tf -o "./$MODEL_NAME" -n $MODEL_NAME --with-json True --with-coeff True "./$MODEL_NAME/$MODEL_NAME.pb"
 
-
-if test "$1" = '--GPU'; then
-    echo Generate prototxt for using CUDA...
-    RbCli opt "./$MODEL_NAME_sg.pbtxt" "./$MODEL_NAME_sg.h5" ./CUDA.pbtxt
-fi
 
 echo Done.

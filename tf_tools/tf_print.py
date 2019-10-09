@@ -21,7 +21,7 @@ def print_configuration_op(FLAGS):
     print('End of configuration')
 
 def print_checkpoint(checkpoint_path:str):
-    os.system("python tf_inspect_checkpoint.py --file_name %s" % checkpoint_path)
+    os.system("python {} --file_name {}".format(os.path.join(os.path.dirname(__file__),"tf_inspect_checkpoint.py"),checkpoint_path))
 
 
 def print_variables(vars,filter=None):

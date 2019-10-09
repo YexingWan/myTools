@@ -27,6 +27,7 @@ import tensorflow as tf
 import tqdm
 from functools import partial
 from tf_print import print_configuration_op, print_variables
+
 from re import match
 
 # from datasets import dataset_factory
@@ -77,6 +78,9 @@ tf.app.flags.DEFINE_string(
     'preprocessing_name', None, 'The name of the preprocessing to use. If left '
                                 'as `None`, then the model_name flag is used.')
 
+tf.app.flags.DEFINE_string(
+    'excluded_scopes', None, 'The exclued_scope for crquant. splite by ,')
+
 tf.app.flags.DEFINE_float(
     'moving_average_decay', None,
     'The decay to use for the moving average.'
@@ -96,7 +100,16 @@ tf.app.flags.DEFINE_float(
     'gpu_memory_fraction', 1, 'Fraction using gpu.')
 
 tf.app.flags.DEFINE_bool(
-    'ignore_missing_vars', False, 'whether use ignore missing vars in checkpoints.')
+    'ignore_missing_vars', False, 'whether ignore missing vars in checkpoints.')
+
+tf.app.flags.DEFINE_float(
+    'scale_factor', 1.,
+    "scale update factor to model weight while retrain.")
+
+tf.app.flags.DEFINE_float(
+    'zero_point_factor', 256. * 256.,
+    "zp update factor to model weight while retrain.")
+
 
 
 FLAGS = tf.app.flags.FLAGS
@@ -127,8 +140,9 @@ def main(_):
     # gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=FLAGS.gpu_memory_fraction)
     gpu_options = tf.GPUOptions(allow_growth=True)
     config = tf.ConfigProto(gpu_options=gpu_options)
-    sess = tf.Session(config=config)
-    with sess.as_default():
+    # sess = tf.Session(config=config)
+    g = tf.Graph()
+    with g.as_default():
 
         #########################
         # build network function#
@@ -153,8 +167,8 @@ def main(_):
         image_preprocessing_fn = partial(image_preprocessing_fn,
                                          output_height = input_size,
                                          output_width = input_size)
-        def preprocess(image,label):
-            return image_preprocessing_fn(image), label-FLAGS.labels_offset
+        def preprocess(image, label):
+            return image_preprocessing_fn(image), label - FLAGS.labels_offset
 
 
         dataset = load_record_classification_ILSVRC_val_dataset(FLAGS.dataset_dir)
@@ -197,6 +211,9 @@ def main(_):
             # This ensures that we make a single pass over all of the data.
             num_batches = math.ceil(50000 / float(FLAGS.batch_size))
 
+        # initialize all variable
+        # init = tf.global_variables_initializer()
+        # sess.run(init)
 
         ############################
         # add quant node in network#
@@ -205,15 +222,12 @@ def main(_):
             import crquant
             crquant.create_graph(
                 pbtxt_path=FLAGS.pbtxt,
-                is_training=False)
+                is_training=False,
+                zero_point_factor=FLAGS.zero_point_factor,
+                scale_factor=FLAGS.scale_factor,
+                excluded_scopes = FLAGS.excluded_scopes)
 
             quant_var = _get_quant_variable_from_model()
-
-            summary_wirter = tf.summary.FileWriter(graph=tf.get_default_graph(),logdir=FLAGS.eval_dir)
-            for var in quant_var:
-                tf.summary.scalar(name = "quant/%s" % quant_var[var].name[:-2],tensor=quant_var[var])
-            merge_summary = tf.summary.merge_all()
-
 
             # add quant var in dictionary for restore
             if isinstance(vars, dict):
@@ -224,10 +238,27 @@ def main(_):
                 vars.extend(list(quant_var.values()))
                 print("load quant var:\n\t" + "\n\t".join(["{}:{}".format(v.name[:-2], v) for v in vars]))
 
+
+        labels = tf.squeeze(labels)
+        # Define the metrics:
+        names_to_values, names_to_updates = slim.metrics.aggregate_metric_map({
+            'Accuracy': slim.metrics.streaming_accuracy(predictions, labels),
+            'Recall_5': slim.metrics.streaming_recall_at_k(
+                logits, labels, 5),
+        })
+
+        for name, value in names_to_values.items():
+            summary_name = 'eval/%s' % name
+            op = tf.summary.scalar(summary_name, value, collections=[])
+            op = tf.Print(op, [value], summary_name)
+            tf.add_to_collection(tf.GraphKeys.SUMMARIES, op)
+
         ################
         # do evaluation#
         ################
-        # initialize all variable
+
+    # initialize all variable
+    with tf.Session(graph=g) as sess:
         init = tf.global_variables_initializer()
         sess.run(init)
 
@@ -237,8 +268,6 @@ def main(_):
 
         if not FLAGS.wait_for_checkpoints:
             print("Do evaluation once.")
-            # load
-            # saver = tf.train.Saver(vars)
 
             if tf.gfile.IsDirectory(FLAGS.checkpoint_path):
                 checkpoint_path = tf.train.latest_checkpoint(FLAGS.checkpoint_path)
@@ -253,15 +282,9 @@ def main(_):
                 checkpoint_path,
                 vars,
                 ignore_missing_vars=FLAGS.ignore_missing_vars)
+
             assign_fn(sess)
-
-            global_step = sess.run([tf_global_step])
-            summaries = sess.run([merge_summary])
-            for summary in summaries:
-                summary_wirter.add_summary(summary,global_step=global_step[0])
-
-
-
+            tf.summary.FileWriter(graph=tf.get_default_graph(),logdir=FLAGS.eval_dir)
             # saver.restore(sess, checkpoint_path)
 
             total_num = 0
@@ -279,8 +302,8 @@ def main(_):
                     print("End of dataset.")
                     break
                 #
-                # print("p:{}".format(predictions_np))
-                # print("l:{}".format(labels_np))
+                print("p:{}".format(predictions_np))
+                print("l:{}".format(labels_np))
 
                 labels_np = np.squeeze(labels_np)
                 predictions_np = np.squeeze(predictions_np)
@@ -296,22 +319,8 @@ def main(_):
             tf.logging.info("origin test accu:{}".format(right_num / total_num))
 
         else:
+
             print("Do evaluation by new checkpoint.")
-            labels = tf.squeeze(labels)
-            # Define the metrics:
-            names_to_values, names_to_updates = slim.metrics.aggregate_metric_map({
-                'Accuracy': slim.metrics.streaming_accuracy(predictions, labels),
-                'Recall_5': slim.metrics.streaming_recall_at_k(
-                    logits, labels, 5),
-            })
-
-            for name, value in names_to_values.items():
-                summary_name = 'eval/%s' % name
-                op = tf.summary.scalar(summary_name, value, collections=[])
-                op = tf.Print(op, [value], summary_name)
-                tf.add_to_collection(tf.GraphKeys.SUMMARIES, op)
-
-
             # Waiting loop.
             checkpoint_path = FLAGS.checkpoint_path
             tf.logging.info('Evaluating %s' % checkpoint_path)
@@ -325,7 +334,7 @@ def main(_):
                 variables_to_restore=vars,
                 eval_interval_secs=60,
                 max_number_of_evaluations=np.inf,
-                timeout=None)
+                timeout=None,)
 
 
 
