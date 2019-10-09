@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-docker run -d --name=yx-wan -v /mnt/newhome/yexing/:/mnt/newhome/yexing -v /home/yx-wan:/home/yx-wan -v /home/yx-wan/:/root -v /nas-software:/nas -i -t corerain/cr-working-env:gpu /bin/bash
 cd ~/newhome
 virtualenv venv -p python3
 
@@ -17,6 +16,11 @@ pip3 install torch==0.4.1 -i https://mirrors.aliyun.com/pypi/simple
 pip3 install torchvision==0.4.1 -i https://mirrors.aliyun.com/pypi/simple
 pip install opencv-python opencv-contrib-python -i https://mirrors.aliyun.com/pypi/simple
 pip3 install Pillow -i https://mirrors.aliyun.com/pypi/simple
+
+
+docker run -d --name=yx-wan -v /mnt:/mnt -v /home/yx-wan:/home/yx-wan -v /home/yx-wan/:/root -v /nas-software:/nas -i -t corerain/cr-working-env:gpu /bin/bash
+docker exec -it yx-wan bash
+activate
 
 pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple
 mkdir ~/newhome/RbEnv
@@ -36,9 +40,7 @@ activate
 
 apt-get install nano
 
-
-
 python -c "import rbcompiler; import tensorflow as tf ; print('RbComplier version: '+rbcompiler.__version__)"
-python -c "import pyRbRuntime; print(pyRbRuntime.__version__())"
+python -c "import pyRbRuntime; print(pyRbRuntime.__version__)"
 
 echo "Setup done."
