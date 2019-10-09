@@ -26,7 +26,7 @@ import tensorflow as tf
 from tf_print import print_configuration_op, print_variables
 from tf_record_tools import load_record_classification_ILSVRC_train_dataset
 
-sys.path.append("../models_tensorflow/models/research/slim")
+sys.path.append("../../models_tensorflow/models/research/slim")
 
 # from models/research/slim
 from nets import nets_factory

@@ -2,7 +2,7 @@ import os
 import sys
 import argparse
 sys.path.append("../")
-sys.path.append("../models_tensorflow/models/research/slim")
+sys.path.append("../../models_tensorflow/models/research/slim")
 from nets import nets_factory
 from restore import tf_basic_restore
 

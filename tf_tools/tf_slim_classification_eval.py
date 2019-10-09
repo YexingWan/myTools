@@ -33,7 +33,7 @@ from re import match
 # from datasets import dataset_factory
 from tf_record_tools import load_record_classification_ILSVRC_val_dataset
 
-sys.path.append("../models_tensorflow/models/research/slim")
+sys.path.append("../../models_tensorflow/models/research/slim")
 # from models/research/slim
 from nets import nets_factory
 from preprocessing import preprocessing_factory
