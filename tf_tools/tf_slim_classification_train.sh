@@ -3,7 +3,7 @@
 
 MODEL='inception_v3'
 echo "Training model: ${MODEL}"
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=1,2
 export PYTHONPATH="../crquant-slim:..:$PYTHONPATH"
 export PYTHONPATH="${HOME}/newhome/workspace/retrainquant:${HOME}/newhome/coco/tools/cocoapi/PythonAPI:$PYTHONPATH"
 PBTXT="${HOME}/newhome/workspace/myTools/rb_tools/${MODEL}/quant/${MODEL}_quant_sg.pbtxt"
@@ -25,8 +25,8 @@ python tf_slim_classification_train.py \
     --checkpoint_path ${CHECKPOINT_PATH} \
     --model_name ${MODEL} \
     --preprocessing_name ${MODEL} \
-    --batch_size 32 \
-    --num_clones 1 \
+    --batch_size 64 \
+    --num_clones 2 \
     --pbtxt $PBTXT \
     --scale_factor 100 \
     --crquant True \
@@ -36,7 +36,8 @@ python tf_slim_classification_train.py \
     --ignore_missing_vars True \
     --save_interval_secs 1200 \
     --save_summaries_secs 600 \
-    --excluded_scopes 'InceptionV3/AuxLogits/' \
+    --excluded_scopes 'clone_[0-9]+/InceptionV3/AuxLogits/' \
+    --variables_scope_replace_dict_key 'clone_[0-9]+/' \
     --end_learning_rate 0
 
 

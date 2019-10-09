@@ -20,6 +20,7 @@ from __future__ import print_function
 
 import sys
 from functools import partial
+import collections
 
 import tensorflow as tf
 from tf_print import print_configuration_op, print_variables
@@ -278,6 +279,14 @@ tf.app.flags.DEFINE_float(
 tf.app.flags.DEFINE_float(
     'zero_point_factor', 256*256,
     "zp update factor to model weight while retrain.")
+
+tf.app.flags.DEFINE_string('variables_scope_replace_dict_key', None, 'keys of scope-replace dictionary used in crquant')
+tf.app.flags.DEFINE_string('variables_scope_replace_dict_key_split', ',', 'split for keys')
+tf.app.flags.DEFINE_string('variables_scope_replace_dict_value', None, 'values of scope-replace dictionary used in crquant')
+tf.app.flags.DEFINE_string('variables_scope_replace_dict_value_split', ',', 'split for values')
+
+
+
 
 
 FLAGS = tf.app.flags.FLAGS
@@ -548,8 +557,37 @@ def main(_):
 
 
         # create clone
-        clones = model_deploy.create_clones(deploy_config, clone_fn, [images, labels])
-        first_clone_scope = deploy_config.clone_scope(0)
+        # clones = model_deploy.create_clones(deploy_config, clone_fn, [images, labels])
+        # Namedtuple used to represent a clone during deployment.
+        Clone = collections.namedtuple('Clone',
+                                       ['outputs',  # Whatever model_fn() returned.
+                                        'scope',  # The scope used to create it.
+                                        'device',  # The device used to create.
+                                        ])
+        clones = []
+        if FLAGS.num_clones > 1:
+            images = tf.split(images,FLAGS.num_clones)
+            labels = tf.split(labels,FLAGS.num_clones)
+        else:
+            images = (images,)
+            labels = (labels,)
+
+
+        with slim.arg_scope([slim.model_variable, slim.variable],
+                            device=deploy_config.variables_device()):
+            # Create clones.
+            for i in range(0, deploy_config.num_clones):
+                args = [images[i], labels[i]]
+                with tf.name_scope(deploy_config.clone_scope(i)) as clone_scope:
+                    clone_device = deploy_config.clone_device(i)
+                    with tf.device(clone_device):
+                        with tf.variable_scope(tf.get_variable_scope(),
+                                               reuse=True if i > 0 else None):
+                            outputs = clone_fn(*args)
+                        clones.append(Clone(outputs, clone_scope, clone_device))
+
+
+        # first_clone_scope = deploy_config.clone_scope(0)
 
 
         # Add summaries for end_points from clone (not quant).
@@ -561,8 +599,12 @@ def main(_):
         #                                     tf.nn.zero_fraction(x)))
 
         # Add summaries for losses.
-        for loss in tf.get_collection(tf.GraphKeys.LOSSES, first_clone_scope):
-            summaries.add(tf.summary.scalar('losses/%s' % loss.op.name, loss))
+        # for loss in tf.get_collection(tf.GraphKeys.LOSSES, first_clone_scope):
+        #     summaries.add(tf.summary.scalar('losses/%s' % loss.op.name, loss))
+        for i in range(FLAGS.num_clones):
+            clone_scope = deploy_config.clone_scope(i)
+            for loss in tf.get_collection(tf.GraphKeys.LOSSES, clone_scope):
+                summaries.add(tf.summary.scalar('losses/%s' % loss.op.name, loss))
 
         # Add summaries for variables.
         for variable in slim.get_model_variables():
@@ -584,6 +626,17 @@ def main(_):
         ##############################
         # Configure the quantization #
         ##############################
+        variables_scope_replace_dict = None
+        if FLAGS.variables_scope_replace_dict_key is not None:
+            keys = str(FLAGS.variables_scope_replace_dict_key).split(FLAGS.variables_scope_replace_dict_key_split)
+            if FLAGS.variables_scope_replace_dict_value is not None:
+                values = str(FLAGS.variables_scope_replace_dict_value).split(FLAGS.variables_scope_replace_dict_value_split)
+                assert (len(keys) == len(values), "length of keys should be same as values")
+                variables_scope_replace_dict = dict(zip(keys,values))
+            else:
+                variables_scope_replace_dict = dict(zip(keys,["" for _ in range(len(keys))]))
+
+
         if FLAGS.crquant:
             import crquant
             crquant.create_graph(
@@ -596,14 +649,17 @@ def main(_):
                 num_samples=FLAGS.num_samples,
                 batch_size=FLAGS.batch_size,
                 zero_point_factor=FLAGS.zero_point_factor,
-                scale_factor=FLAGS.scale_factor)
+                scale_factor=FLAGS.scale_factor,
+                variables_scope_replace_dict = variables_scope_replace_dict)
 
         #########################################
         # Configure the optimization procedure. #
         #########################################
         # Gather update_ops from the first clone. These contain, for example,
         # the updates for the batch_norm variables created by network_fn.
-        update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, first_clone_scope)
+        # update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, first_clone_scope)
+        update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
+
         with tf.device(deploy_config.optimizer_device()):
             learning_rate = _configure_learning_rate(FLAGS.num_samples, global_step)
             optimizer = _configure_optimizer(learning_rate)
@@ -657,8 +713,9 @@ def main(_):
 
         # Add the summaries from the first clone. These contain the summaries
         # created by model_fn and either optimize_clones() or _gather_clone_loss().
-        summaries |= set(tf.get_collection(tf.GraphKeys.SUMMARIES,
-                                           first_clone_scope))
+        # summaries |= set(tf.get_collection(tf.GraphKeys.SUMMARIES,
+        #                                    first_clone_scope))
+        summaries |= set(tf.get_collection(tf.GraphKeys.SUMMARIES))
 
         # Merge all summaries together.
         summary_op = tf.summary.merge(list(summaries), name='summary_op')
