@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-MODEL='inception_v3'
+MODEL='inception_resnet_v2'
 echo "Evaluating model: ${MODEL}"
 export CUDA_VISIBLE_DEVICES=2
 export PYTHONPATH="../crquant-slim:..:$PYTHONPATH"
@@ -9,36 +9,49 @@ export PYTHONPATH="${HOME}/newhome/workspace/retrainquant:${HOME}/newhome/coco/t
 PBTXT="${HOME}/newhome/workspace/myTools/rb_tools/${MODEL}/quant/${MODEL}_quant_sg.pbtxt"
 #PBTXT="/nas/BenchmarkData/rainbuilder/tf_sgir_1.4.2_kld/resnet_v1_50_gpu/quant/resnet_v50_quant_sg.pbtxt"
 
-CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/${MODEL}.ckpt"
-#CHECKPOINT_PATH="/home/yx-wan/newhome/checkpoint/inception_resnet_v2/restored"
+#CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/${MODEL}.ckpt"
+#CHECKPOINT_PATH="${HOME}/newhome/checkpoint/quant/resnet50_EMA_train/"
+CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/EMA_quant_retrain"
+#CHECKPOINT_PATH="${HOME}/newhome/checkpoint/resnet_v1_50/EMA_quant_retrain"
 
 
-EVAL_DIR="${HOME}/newhome/checkpoint/${MODEL}/eval_quant_log"
+
+#EVAL_DIR="${HOME}/newhome/checkpoint/${MODEL}/eval_quant_log"
 DATASET="${HOME}/newhome/Imagenet/val_no_resize"
+EVAL_DIR="${HOME}/newhome/checkpoint/${MODEL}/EMA_quant_retrain/eval_log"
+#EVAL_DIR="${HOME}/newhome/checkpoint/quant/resnet50_EMA_calibration_1000/eval_log"
 
 
 
 python tf_slim_classification_eval.py \
---batch_size 32 \
+--batch_size 8 \
 --checkpoint_path ${CHECKPOINT_PATH} \
 --model_name ${MODEL} \
 --preprocessing_name ${MODEL} \
 --dataset_dir ${DATASET} \
 --eval_dir ${EVAL_DIR} \
---pbtxt ${PBTXT} \
---excluded_scopes 'InceptionV3/AuxLogits' \
---ignore_missing_vars True \
+--wait_for_checkpoints True \
+--excluded_scopes 'InceptionResnetV2/AuxLogits/' \
 --crquant True
 
 
+#--scale_factor 100
+#--excluded_scopes 'InceptionResnetV2/AuxLogits/' \
+#--scale_factor 100 \
+#--pbtxt ${PBTXT} \
+#--scale_factor 100 \
+#--excluded_scopes 'InceptionResnetV2/AuxLogits/' \
+#--pbtxt ${PBTXT} \
 #--labels_offset 1 \
 #--scale_factor 100 \
-
+#--ignore_missing_vars True \
 #--eval_dir ${HOME}/newhome/workspace/myTools/rb_tools/${MODEL}/quant/eval_quant_event \
 #--excluded_scopes 'InceptionV3/AuxLogits' \
 #--ignore_missing_vars True \
 #--pbtxt $PBTXT \
-#--crquant True
+
+
+
 
 
 #

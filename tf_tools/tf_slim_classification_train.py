@@ -273,11 +273,11 @@ tf.app.flags.DEFINE_string('excluded_scopes', None,
 tf.app.flags.DEFINE_string('pbtxt', None, 'pbtxt for model')
 
 tf.app.flags.DEFINE_float(
-    'scale_factor', 1,
+    'scale_factor', 1.,
     "scale update factor to model weight while retrain.")
 
 tf.app.flags.DEFINE_float(
-    'zero_point_factor', 256*256,
+    'zero_point_factor', 256. * 256.,
     "zp update factor to model weight while retrain.")
 
 tf.app.flags.DEFINE_string('variables_scope_replace_dict_key', None, 'keys of scope-replace dictionary used in crquant')
@@ -475,6 +475,7 @@ def main(_):
     if not FLAGS.dataset_dir:
         raise ValueError('You must supply the dataset directory with --dataset_dir')
 
+
     tf.logging.set_verbosity(tf.logging.INFO)
     with tf.Graph().as_default():
         #######################
@@ -523,13 +524,15 @@ def main(_):
             return image_preprocessing_fn(image), label - FLAGS.labels_offset
 
 
-        dataset = dataset.map(preprocess)
-        dataset = dataset.batch(FLAGS.batch_size)
+        dataset = dataset.map(preprocess,num_parallel_calls = 3)
+        # prefetch the data
+        dataset = dataset.prefetch(buffer_size=FLAGS.batch_size * 3)
+        dataset = dataset.batch(FLAGS.batch_size//FLAGS.num_clones)
         dataset = dataset.repeat(FLAGS.number_epochs)
         iterator = dataset.make_one_shot_iterator()
-        images, labels = iterator.get_next()
-        labels = slim.one_hot_encoding(
-            labels, 1001 - FLAGS.labels_offset)
+        # images, labels = iterator.get_next()
+        # labels = slim.one_hot_encoding(
+        #     labels, 1001 - FLAGS.labels_offset)
 
         ####################
         # Define the model #
@@ -565,25 +568,33 @@ def main(_):
                                         'device',  # The device used to create.
                                         ])
         clones = []
-        if FLAGS.num_clones > 1:
-            images = tf.split(images,FLAGS.num_clones)
-            labels = tf.split(labels,FLAGS.num_clones)
-        else:
-            images = (images,)
-            labels = (labels,)
+
+    #     images, labels = iterator.get_next()
+
+
+    #     labels = slim.one_hot_encoding(
+    #         labels, 1001 - FLAGS.labels_offset)
+    #     if FLAGS.num_clones > 1:
+    #         images = tf.split(images,FLAGS.num_clones)
+    #         labels = tf.split(labels,FLAGS.num_clones)
+    #     else:
+    #         images = (images,)
+    #         labels = (labels,)
 
 
         with slim.arg_scope([slim.model_variable, slim.variable],
                             device=deploy_config.variables_device()):
             # Create clones.
             for i in range(0, deploy_config.num_clones):
-                args = [images[i], labels[i]]
+                images, labels = iterator.get_next()
+                labels = slim.one_hot_encoding(
+                    labels, 1001 - FLAGS.labels_offset)
                 with tf.name_scope(deploy_config.clone_scope(i)) as clone_scope:
                     clone_device = deploy_config.clone_device(i)
                     with tf.device(clone_device):
                         with tf.variable_scope(tf.get_variable_scope(),
                                                reuse=True if i > 0 else None):
-                            outputs = clone_fn(*args)
+                            outputs = clone_fn(images, labels)
                         clones.append(Clone(outputs, clone_scope, clone_device))
 
 
@@ -639,18 +650,22 @@ def main(_):
 
         if FLAGS.crquant:
             import crquant
-            crquant.create_graph(
-                is_training=True,
-                pbtxt_path=FLAGS.pbtxt,
-                excluded_scopes=FLAGS.excluded_scopes,
-                calibration_step=FLAGS.calibration_step,
-                freeze_bn_epoch=FLAGS.freeze_bn_epoch,
-                freeze_quant_epoch=FLAGS.freeze_quant_epoch,
-                num_samples=FLAGS.num_samples,
-                batch_size=FLAGS.batch_size,
-                zero_point_factor=FLAGS.zero_point_factor,
-                scale_factor=FLAGS.scale_factor,
-                variables_scope_replace_dict = variables_scope_replace_dict)
+            try:
+                crquant.create_graph(
+                    is_training=True,
+                    pbtxt_path=FLAGS.pbtxt,
+                    excluded_scopes=FLAGS.excluded_scopes,
+                    calibration_step=FLAGS.calibration_step,
+                    freeze_bn_epoch=FLAGS.freeze_bn_epoch,
+                    freeze_quant_epoch=FLAGS.freeze_quant_epoch,
+                    num_samples=FLAGS.num_samples,
+                    batch_size=FLAGS.batch_size,
+                    zero_point_factor=FLAGS.zero_point_factor,
+                    scale_factor=FLAGS.scale_factor,
+                    variables_scope_replace_dict = variables_scope_replace_dict)
+            except Exception as err:
+                writer = tf.summary.FileWriter(graph=tf.get_default_graph(),logdir = "./error_graph")
+                raise err
 
         #########################################
         # Configure the optimization procedure. #
@@ -659,6 +674,15 @@ def main(_):
         # the updates for the batch_norm variables created by network_fn.
         # update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS, first_clone_scope)
         update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)
+
+        # if doing calibration, stop update BN moving average and variance
+        # if FLAGS.calibration_step > 0:
+        #     update_ops =  [ op for op in update_ops if 'BatchNorm' not in op.name]
+        #     print("\n".join(sorted([op.name for op in update_ops])))
+        # import pdb
+        # pdb.set_trace()
+
+
 
         with tf.device(deploy_config.optimizer_device()):
             learning_rate = _configure_learning_rate(FLAGS.num_samples, global_step)
@@ -683,8 +707,6 @@ def main(_):
 
         # Variables to train.s
         variables_to_train = _get_variables_to_train()
-        # print_variables(variables_to_train,r"^.*zero_point$")
-        # print_variables(variables_to_train,r"^.*scale$")
 
         #  and returns a train_tensor and summary_op
         total_loss, clones_gradients = model_deploy.optimize_clones(
@@ -720,10 +742,16 @@ def main(_):
         # Merge all summaries together.
         summary_op = tf.summary.merge(list(summaries), name='summary_op')
 
+        ###############
+        # build saver #
+        ###############
+
+        saver = tf.train.Saver(max_to_keep = 100,keep_checkpoint_every_n_hours = 0.5)
 
         ###########################
         # Kicks off the training. #
         ###########################
+
         try :
             slim.learning.train(
                 train_tensor,
@@ -736,7 +764,8 @@ def main(_):
                 log_every_n_steps=FLAGS.log_every_n_steps,
                 save_summaries_secs=FLAGS.save_summaries_secs,
                 save_interval_secs=FLAGS.save_interval_secs,
-                sync_optimizer=optimizer if FLAGS.sync_replicas else None,)
+                sync_optimizer=optimizer if FLAGS.sync_replicas else None,
+                saver = saver)
 
 
         except tf.errors.OutOfRangeError:

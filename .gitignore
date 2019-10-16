@@ -118,3 +118,5 @@ exp
 events*
 
 cv_tools/OCR/origin_data/
+
+/rb_tools/quant_model
