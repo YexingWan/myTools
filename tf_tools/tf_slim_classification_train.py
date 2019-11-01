@@ -529,6 +529,7 @@ def main(_):
         dataset = dataset.prefetch(buffer_size=FLAGS.batch_size * 3)
         dataset = dataset.batch(FLAGS.batch_size//FLAGS.num_clones)
         dataset = dataset.repeat(FLAGS.number_epochs)
+
         # iterator = dataset.make_one_shot_iterator()
         # images, labels = iterator.get_next()
         # labels = slim.one_hot_encoding(
