@@ -56,12 +56,14 @@ for op in ops:
         new_conv_op = tf.Operation(node_def = conv_node_def,g=g,op_def=op.op_def,inputs=[old_conv_op_inputs[0],new_kernel_tensor])
         #
         #
-        # new_conv_op._update_input(1,new_kernel_tensor)
-        # new_conv_op._update_input(0,op.inputs[0])
-        new_conv_op_output = new_conv_op.outputs[0]
-        old_conv_op_output = op.outputs[0]
+        new_conv_op._update_input(1,new_kernel_tensor)
+        new_conv_op._update_input(0,op.inputs[0])
 
+        new_conv_op_output = new_conv_op.outputs[0]
+
+        old_conv_op_output = op.outputs[0]
         old_conv_op_output_consumers = old_conv_op_output.consumers()
+
         consumers_indices = {}
         for c in old_conv_op_output_consumers:
             consumers_indices[c] = [

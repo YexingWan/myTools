@@ -102,13 +102,6 @@ tf.app.flags.DEFINE_float(
 tf.app.flags.DEFINE_bool(
     'ignore_missing_vars', False, 'whether ignore missing vars in checkpoints.')
 
-tf.app.flags.DEFINE_float(
-    'scale_factor', 1.,
-    "scale update factor to model weight while retrain.")
-
-tf.app.flags.DEFINE_float(
-    'zero_point_factor', 256. * 256.,
-    "zp update factor to model weight while retrain.")
 
 
 
@@ -223,8 +216,6 @@ def main(_):
             crquant.create_graph(
                 pbtxt_path=FLAGS.pbtxt,
                 is_training=False,
-                zero_point_factor=FLAGS.zero_point_factor,
-                scale_factor=FLAGS.scale_factor,
                 excluded_scopes = FLAGS.excluded_scopes)
 
             quant_var = _get_quant_variable_from_model()

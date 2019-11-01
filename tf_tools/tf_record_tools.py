@@ -52,11 +52,17 @@ def load_record_classification_ILSVRC_val_dataset(record_dir: str,
         feats.update({'image': image})
         return feats["image"], feats["label"]
 
-    filenames = glob.glob(os.path.join(record_dir, file_search_name))
-    assert (len(filenames) != 0, "No record file found. Please check the path.")
-    dataset = tf.data.TFRecordDataset(filenames)
-    dataset = dataset.map(record_parse_function)
-    dataset = dataset.shuffle(buffer_size=1000)
+    # filenames = glob.glob(os.path.join(record_dir, file_search_name))
+    # dataset = tf.data.TFRecordDataset(filenames)
+    # assert (len(filenames) != 0, "No record file found. Please check the path.")
+
+    # do Parallelize data extraction
+    files = tf.data.Dataset.list_files(os.path.join(record_dir, file_search_name))
+    dataset = files.interleave(
+        tf.data.TFRecordDataset, cycle_length=3,
+        num_parallel_calls=3)
+    dataset = dataset.map(record_parse_function,num_parallel_calls=3)
+    dataset = dataset.shuffle(buffer_size=500)
 
     return dataset
 

@@ -38,10 +38,8 @@ with open(PROTOTXT_PATH,'r') as f:
 conv_nodes_name = []
 activation_nodes_name = []
 for node in sg_def.node:
-    if node.op == "Conv2D":
+    if node.op == "Conv2D" or node.op == 'TypeCast':
         conv_nodes_name.append(node.name)
-    elif "Relu" in node.op:
-        activation_nodes_name.append(node.name)
 
 
 OUTPUT_NODE_LIST=conv_nodes_name

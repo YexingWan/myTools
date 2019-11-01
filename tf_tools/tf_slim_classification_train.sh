@@ -1,47 +1,64 @@
 #!/usr/bin/env bash
 
 
-MODEL='inception_v3'
+MODEL='inception_resnet_v2'
 echo "Training model: ${MODEL}"
-export CUDA_VISIBLE_DEVICES=1,2
+export CUDA_VISIBLE_DEVICES=2
 export PYTHONPATH="../crquant-slim:..:$PYTHONPATH"
 export PYTHONPATH="${HOME}/newhome/workspace/retrainquant:${HOME}/newhome/coco/tools/cocoapi/PythonAPI:$PYTHONPATH"
 PBTXT="${HOME}/newhome/workspace/myTools/rb_tools/${MODEL}/quant/${MODEL}_quant_sg.pbtxt"
-CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/${MODEL}.ckpt"
-#CHECKPOINT_PATH="/home/yx-wan/newhome/checkpoint/inception_resnet_v2/restored"
-TRAIN_DIR="${HOME}/newhome/checkpoint/quant/${MODEL}"
+#CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/${MODEL}.ckpt"
+
+CHECKPOINT_PATH="${HOME}/newhome/checkpoint/${MODEL}/EMA_quant"
+#CHECKPOINT_PATH="${HOME}/newhome/checkpoint/quant/resnet50_EMA_calibration_1000/"
+#TRAIN_DIR="${HOME}/newhome/checkpoint/quant/${MODEL}"
+TRAIN_DIR="${HOME}/newhome/checkpoint/${MODEL}/EMA_quant_retrain"
 DATASET="${HOME}/newhome/Imagenet/train_no_resize"
+#DATASET="${HOME}/newhome/Imagenet/val_no_resize"
+
 
 
 python tf_slim_classification_train.py \
     --train_dir $TRAIN_DIR \
+    --save_interval_secs 1200 \
+    --save_summaries_secs 600 \
     --weight_decay 0.0001 \
     --optimizer adam \
-    --learning_rate 0.000001 \
+    --learning_rate 0.0000005 \
     --learning_rate_decay_factor 0.94 \
     --learning_rate_decay_type exponential \
     --num_epochs_per_decay 1 \
+    --freeze_bn_epoch 2 \
+    --freeze_quant_epoch 7 \
+    --number_epochs 2 \
     --dataset_dir ${DATASET} \
     --checkpoint_path ${CHECKPOINT_PATH} \
     --model_name ${MODEL} \
     --preprocessing_name ${MODEL} \
-    --batch_size 64 \
-    --num_clones 2 \
-    --pbtxt $PBTXT \
-    --scale_factor 100 \
+    --batch_size 8 \
+    --num_clones 1 \
     --crquant True \
-    --freeze_bn_epoch 5 \
-    --freeze_quant_epoch 10 \
-    --number_epochs 15 \
-    --ignore_missing_vars True \
-    --save_interval_secs 1200 \
-    --save_summaries_secs 600 \
-    --excluded_scopes 'clone_[0-9]+/InceptionV3/AuxLogits/' \
-    --variables_scope_replace_dict_key 'clone_[0-9]+/' \
-    --end_learning_rate 0
+    --end_learning_rate 0 \
+    --excluded_scopes 'InceptionResnetV2/AuxLogits/'
 
 
+#    --scale_factor 100 \
+#    --excluded_scopes 'InceptionResnetV2/AuxLogits/' \
+
+#    --excluded_scopes 'InceptionResnetV2/AuxLogits/' \
+#    --excluded_scopes 'clone_[0-9]+/InceptionResnetV2/AuxLogits/' \
+#    --save_interval_secs 1200 \
+#    --save_summaries_secs 600 \
+#    --variables_scope_replace_dict_key 'clone_[0-9]+/' \
+#    --pbtxt $PBTXT \
+#    --ignore_missing_vars True
+
+#    --save_interval_secs 1200 \
+#    --save_summaries_secs 600 \
+#    --freeze_bn_epoch 5 \
+#    --freeze_quant_epoch 10 \
 #    --labels_offset 1 \
+#    --number_epochs 15 \
 
 #    --variables_scope_replace_dict_keys 'clone_[0-9]+/' \
 #    --excluded_scopes 'InceptionV3/AuxLogits/' \
