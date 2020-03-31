@@ -8,9 +8,13 @@ import torch
 def pytorch_load_state_dict_no_parallel(model, state_dict):
     new_state_dict = OrderedDict()
     for k, v in state_dict.items():
-        name = k[7:]  # remove `module.`
+        if k[:6] == 'module':
+            name = k[7:]  # remove `module.`
+        else:
+            name = k
         new_state_dict[name] = v
     model.load_state_dict(new_state_dict)
+
     return model
 
 def pytorch_flatten_print_model(model:torch.nn.Module):

@@ -1,4 +1,5 @@
-from ..preprocess import shapen,extract_rect_zone
+# coding: UTF-8
+from ..image_aug import shapen,extract_rect_zone
 from collections import defaultdict
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import string
@@ -12,14 +13,6 @@ import os,sys, logging
 sys.path.append("./")
 
 
-def generate_background(h = 288, w = 736):
-    # R60 G120 B180
-    R = np.random.uniform(45,75,(h,w,1))
-    G = np.random.uniform(110,140,(h,w,1))
-    B = np.random.uniform(160,190,(h,w,1))
-    background = np.concatenate([B,G,R],axis=2).astype(np.uint8)
-    return background
-
 
 def high_fix_resize(img:np.ndarray,h_fix):
     h_fix = h_fix+np.random.randint(-5,5)
@@ -29,7 +22,35 @@ def high_fix_resize(img:np.ndarray,h_fix):
     return img
 
 
+def iter_extract_list(num_img,h = 288, w = 736):
+    extract_list = [(box, path, ori_img, result) for box, path, ori_img, result
+                    in
+                    extract_rect_zone("/mnt/newhome/yexing/workspace/myTools/cv_tools/OCR/train_crop_rotate/", h, w)]
+    index = np.random.randint(0,len(extract_list)-1,num_img)
+    for i in index:
+        yield extract_list[i]
+
+
+def generate_background(h = 288, w = 736):
+    # R60 G120 B180
+    R = np.random.uniform(45,75,(h,w,1))
+    G = np.random.uniform(110,140,(h,w,1))
+    B = np.random.uniform(160,190,(h,w,1))
+    background = np.concatenate([B,G,R],axis=2).astype(np.uint8)
+    return background
+
+
 def generate_new_data(num_img,h = 288, w = 736):
+    """
+    generate data by stick,
+    根据方法中设定位置+扰动的为欧洲贴从原图扣下来的字符/图片
+    这个方法写的时候是往扣下来的名牌或generate_background方法生成的名牌上贴
+
+    :param num_img:
+    :param h:
+    :param w:
+    :return:
+    """
     training_data_dir = "/mnt/newhome/yexing/workspace/myTools/cv_tools/OCR/train_crop_rotate"
     save_dir = "/mnt/newhome/yexing/workspace/myTools/cv_tools/OCR/fake_training_data"
     if not os.path.exists(save_dir):
@@ -89,8 +110,13 @@ def generate_new_data(num_img,h = 288, w = 736):
 
 
     file = open(os.path.join(save_dir,"new_train.txt"), "w")
+
+
+    # GENERATE NEW DATA
     for index in range(num_img):
         bg = generate_background(h,w)
+
+        # line 1 and line 2 length setting
         l1_short_len = np.random.randint(1,4)
         l2_short_1_len = np.random.randint(1,4)
         l2_short_2_len = np.random.randint(1,4)
@@ -117,6 +143,7 @@ def generate_new_data(num_img,h = 288, w = 736):
         cur_lb_y = int(1/5 * h)+h_letter_capital+np.random.randint(-5,5)
         max_y = -1
         cur_lt_x = int(1/8 * w)+np.random.randint(-5,5)
+
         for l, id, name in zip(l1[:l1_short_len],ran1[:l1_short_len],name1[:l1_short_len]):
             if name in string.punctuation:
                 bg[int(cur_lb_y - h_letter_capital / 2 - l.shape[0] / 2):int(cur_lb_y - h_letter_capital / 2 + l.shape[0] / 2),
@@ -232,7 +259,6 @@ def generate_new_data(num_img,h = 288, w = 736):
     file.close()
 
 
-
 def generate_strong_random_new_data_PIL(num_img,h = 288, w = 736,
                                         angle_ramdom_range = (-30,30),
                                         num_letter_random_range = (24,28),
@@ -248,9 +274,34 @@ def generate_strong_random_new_data_PIL(num_img,h = 288, w = 736,
                                         num_row = 2,
                                         num_letter_pre_row = 14,
                                         splite = 0.2):
-    font_path = '/home/yx-wan/newhome/workspace/myTools/cv_tools/fonts/'
-    class_file = "/mnt/newhome/yexing/workspace/myTools/cv_tools/OCR/train_crop_rotate/classes.txt"
-    save_dir = "/mnt/newhome/yexing/workspace/myTools/cv_tools/OCR/fake_training_data_PIL_random"
+    """
+    更多设定的,用PIL做字符样本生成的接
+    这个方法写的时候是往扣下来的名牌或generate_background方法生成的名牌上贴
+
+    :param num_img:
+    :param h:
+    :param w:
+    :param angle_ramdom_range:
+    :param num_letter_random_range:
+    :param size_random_range:
+    :param R_range:
+    :param G_range:
+    :param B_range:
+    :param width_range:
+    :param length_range:
+    :param random_blur:
+    :param random_block:
+    :param random_width:
+    :param random_length:
+    :param random_location:
+    :param num_row:
+    :param num_letter_pre_row:
+    :param splite:
+    :return:
+    """
+    font_path = '/home/yx-wan/newhome/workspace/myTools/random_sample_gen/fonts/'
+    class_file = "/mnt/newhome/yexing/workspace/myTools/cv_tools/random_sample_gen/train_crop_rotate/classes.txt"
+    save_dir = "/mnt/newhome/yexing/workspace/myTools/cv_tools/random_sample_gen/fake_training_data_PIL_random"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
     class_file = open(class_file,"r")
@@ -289,7 +340,7 @@ def generate_strong_random_new_data_PIL(num_img,h = 288, w = 736,
         continue_flag = False
 
         bg = generate_background(h,w)
-        bg = cv2.cvtColor(bg,cv2.COLOR_BGR2RGB)
+        # bg = cv2.cvtColor(bg,cv2.COLOR_BGR2RGB)
         bg = Image.fromarray(bg)
         bg_draw = ImageDraw.Draw(bg)
 
@@ -377,7 +428,6 @@ def generate_strong_random_new_data_PIL(num_img,h = 288, w = 736,
                                                           bg_tly_random + img_crop.size[1],
                                                           idx))
 
-            # TODO: palce in 2 rows as specific, similar as sticker generation
             else:
                 if cur_lt_x + img_crop.size[0] >= w-5 or cur_lt_y + img_crop.size[1] >= h-5:
                     if (cur_number + 1) % num_letter_pre_row == 0:
@@ -430,16 +480,15 @@ def generate_strong_random_new_data_PIL(num_img,h = 288, w = 736,
     print("Done")
 
 
-def iter_extract_list(num_img,h = 288, w = 736):
-    extract_list = [(box, path, ori_img, result) for box, path, ori_img, result
-                    in
-                    extract_rect_zone("/mnt/newhome/yexing/workspace/myTools/cv_tools/OCR/train_crop_rotate/", h, w)]
-    index = np.random.randint(0,len(extract_list)-1,num_img)
-    for i in index:
-        yield extract_list[i]
 
 
 def generate_new_warped_data(num_img):
+    """
+    这个是针对荣旭当时的情况,先生成新的铭牌.然后把生成的名牌从新贴回带背景的原图上.
+
+    :param num_img:
+    :return:
+    """
     h = 288
     w = 736
     warped_card_save_dir = "/mnt/newhome/yexing/workspace/myTools/cv_tools/OCR/fake_warped_data"
@@ -516,7 +565,10 @@ def generate_new_warped_data(num_img):
 
 
 logging.basicConfig(level=logging.INFO)
-generate_new_warped_data(4000)
+
+
+num = sys.argv[1]
+generate_new_warped_data(num)
 
 # generate_strong_random_new_data_PIL(10,h = 288, w = 736,
 #                                         angle_ramdom_range = (-15,15),
@@ -526,15 +578,6 @@ generate_new_warped_data(4000)
 #                                         random_blur = 0.7,
 #                                         random_block = 0.7)
 
-
-
-
-# warp_bg(4000)
-# num = sys.argv[1]
-#
-# logging.basicConfig(level=logging.DEBUG)
-# # generate_new_data(int(num))
-# generate_new_data_PIL(1)
 
 
 

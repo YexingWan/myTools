@@ -1,6 +1,7 @@
 import sys
-from MaskImpt import MaskFPGM, MaskThiNet, MaskFilterNorm, old_MaskThiNet, MaskAPoZ
-import MaskPrune
+sys.path.insert(0,"..")
+from MaskImpt.MaskImpt import MaskFPGM, MaskThiNet, MaskFilterNorm, MaskAPoZ
+import core.MaskPrune as MaskPrune
 import logging
 import numpy as np
 import torch
@@ -43,12 +44,13 @@ def vis_model(model):
 
 
 def test_FPGM(model,pre_layer = True,rate = 0.2):
+    hard_handle = None
     random_input = np.random.rand(32, 3, 224, 224)
     input_tensor = torch.Tensor(random_input).cuda()
     print("pruning rate: {}".format(rate))
 
+    # Build Mask object and get origin infer time
     mask = MaskFPGM(model,pre_layer=pre_layer,rate_dist_per_layer=rate)
-
     model = mask.model
     model.cuda()
     model.eval()
@@ -62,7 +64,7 @@ def test_FPGM(model,pre_layer = True,rate = 0.2):
         total_ori_para = total_ori_para + np.size(p.data.cpu().numpy())
 
 
-
+    # compile and do soft pruning by mask
     mask.make()
     if pre_layer:
         for _ in range(len(mask.mask_name)):
@@ -71,32 +73,37 @@ def test_FPGM(model,pre_layer = True,rate = 0.2):
             print("="*100)
     else:
         mask.do_mask()
+
+
+    # get the result after soft-pruning (including fc layer if exist)
     model = mask.model
-    model.cuda()
-    model.eval()
-    for name, module in model.named_modules():
-        if not list(module.children()):
-            if isinstance(module, torch.nn.Linear):
-                mask_handle = module.register_forward_hook(fc_hook)
-                break
-    fake_pruning_result = model(input_tensor)
-    mask_handle.remove()
-
-
-    model = mask.generate_pruned_model()
-    vis_model(model)
-    model.cuda()
-    model.eval()
-
-    s = time()
-    for _ in range(10):
-        model(input_tensor)
-    e = time()
     for name, module in model.named_modules():
         if not list(module.children()):
             if isinstance(module, torch.nn.Linear):
                 hard_handle = module.register_forward_hook(fc_hook)
                 break
+    model.cuda()
+    model.eval()
+    fake_pruning_result = model(input_tensor)
+
+    if hard_handle is not None:
+        hard_handle.remove()
+
+
+    # do hard pruning by mask
+    model = mask.generate_pruned_model()
+    vis_model(model)
+
+
+    # get get pruneded model infer time
+    model.cuda()
+    model.eval()
+    s = time()
+    for _ in range(10):
+        model(input_tensor)
+    e = time()
+
+    # get result of pruned model, should be same as the result of soft-pruned model
     real_pruning_result = model(input_tensor)
     hard_handle.remove()
 
@@ -126,8 +133,7 @@ def test_FPGM(model,pre_layer = True,rate = 0.2):
 
 
 def test_ThiNet(model):
-    mask = old_MaskThiNet(model,"/home/yx-wan/newhome/Imagenet/hxfan_val/")
-    # mask.do_mask()
+    mask = MaskThiNet(model,"/home/yx-wan/newhome/Imagenet/hxfan_val/")
     mask.make()
 
     for _ in range(len(mask.mask_name)):
@@ -141,7 +147,7 @@ def test_ThiNet(model):
 
 def test_maskprune(mask:MaskPrune.Mask, input_tensor:torch.Tensor, use_cuda = True,pre_layer = False, *kwargs):
 
-    # test origin model
+    # test origin model infer time-cost
     model = mask.model
     if use_cuda:
         model.cuda()
@@ -157,19 +163,20 @@ def test_maskprune(mask:MaskPrune.Mask, input_tensor:torch.Tensor, use_cuda = Tr
         total_ori_para = total_ori_para + np.size(p.data.cpu().numpy())
 
     # do soft-pruning
-    mask.make()
+    mask.make() # build and compile mask
     if pre_layer:
         if len(mask.mask_name) == 0:
             logging.info("Nothing can be pruned.")
             exit(1)
         for _ in range(len(mask.mask_name)):
-            mask.do_mask()
+            mask.do_mask() # so soft pruning by mask
             mask.if_zero()
             print("="*100)
     else:
-        mask.do_mask()
+        mask.do_mask() # so soft pruning by mask
 
 
+    # get the result after soft-pruning (including fc layer if exist)
     model = mask.model
     if use_cuda:
         model.cuda()
@@ -182,12 +189,15 @@ def test_maskprune(mask:MaskPrune.Mask, input_tensor:torch.Tensor, use_cuda = Tr
                 has_handle = True
                 break
     fake_pruning_result = model(input_tensor)
+
     if has_handle:
         mask_handle.remove()
 
     # do hard pruning
     model = mask.generate_pruned_model()
     vis_model(model)
+
+    # get the result after hard-pruning (including fc layer if exist)
     if use_cuda:
         model.cuda()
     model.eval()
@@ -253,6 +263,9 @@ model = models.resnet50()                               # success
 
 ################################################################
 # create Yolov3
+# Currently YoloV3 is not support
+# TODO: ModuleList and ModuleDict should be support
+
 weights_path = "/home/yx-wan/newhome/workspace/PyTorch-YOLOv3/weights/yolov3.weights"
 model_def = "/home/yx-wan/newhome/workspace/PyTorch-YOLOv3/config/yolov3.cfg"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -268,7 +281,6 @@ random_input = np.random.rand(1, 3, 416, 416)
 ################################################################3
 
 model.eval()
-
 use_cuda = True
 pre_layer = False
 pruned_rate = 0.3
@@ -278,6 +290,7 @@ val_dir = "/home/yx-wan/newhome/Imagenet-pic/hxfan_val/"
 if use_cuda:
     input_tensor = input_tensor.cuda()
     model = model.cuda()
+
 data_loader = torch.utils.data.DataLoader(datasets.ImageFolder(val_dir, transforms.Compose([
             transforms.Resize(256),
             transforms.CenterCrop(224),
