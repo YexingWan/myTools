@@ -6,20 +6,20 @@
 * [FilterNorm](https://openreview.net/pdf?id=rJqFGTslg)
 
 Alg TODO List:
- -[ ] Oracel
- -[ ] Approximate Oracel
- -[ ] DCP
- -[ ] RandomPruning
- -[ ] NISP
- -[ ] ACM 
+ - [ ] Oracel
+ - [ ] Approximate Oracel
+ - [ ] DCP
+ - [ ] RandomPruning
+ - [ ] NISP
+ - [ ] ACM 
  
  Dev TODO List:
- -[ ] Split MaskImpt
- -[ ] ModuleList Support (以支持YOLOv3的剪枝为标注)
- -[ ] demo with fineturn
- -[ ] pre-layer intern-pruning finetune [callback function]
- -[ ] setup as module
- -[ ] multi-GPU fineturn
+ - [ ] Split MaskImpt
+ - [ ] ModuleList Support (以支持YOLOv3的剪枝为标注)
+ - [ ] demo with fineturn
+ - [ ] pre-layer intern-pruning finetune [callback function]
+ - [ ] setup as moduleS
+ - [ ] multi-GPU fineturn
 
  
  
