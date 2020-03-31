@@ -12,19 +12,8 @@ Alg TODO List:
  - [ ] RandomPruning
  - [ ] NISP
  - [ ] ACM 
- 
- Dev TODO List:
- - [ ] Split MaskImpt
- - [ ] ModuleList Support (以支持YOLOv3的剪枝为标注)
- - [ ] demo with fineturn
- - [ ] pre-layer intern-pruning finetune [callback function]
- - [ ] setup as moduleS
- - [ ] multi-GPU fineturn
 
  
- 
- 
-
 ## 模型支持
 
 当前用于测试的模型主要是torchvision.model中的模型,具体可以参考项目根目录的test_MaskImpt.py

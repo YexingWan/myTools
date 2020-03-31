@@ -3,6 +3,19 @@
 这篇readme作为开发指南,主要是记录Mask模块的一些项目结构,实现思路和代码细节,并会记录一下当前开发进度.
 
 
+
+ 
+## TODO List:
+ - [x] remake function after hard_pruning
+ - [ ] test remake function
+ - [ ] Split MaskImpt
+ - [ ] ModuleList Support (以支持YOLOv3的剪枝为标注)
+ - [ ] (average_pool + ) flatten + linear support
+ - [ ] pre-layer intern-pruning finetune [callback function]
+ - [ ] demo code with fineturn
+ - [ ] setup as module
+ - [ ] multi-GPU fineturn
+
 ## 项目结构和思路
 
 项目结构很简单,只有2层,Mask类为所有pruning实现类的基类,实现了底层的torch模型解析,往前往后的条件结构搜索,基于Mask的软剪枝,以及对权重和参数直接修改的硬剪枝等. Mask类还定义了一个通用的剪枝执行顺序和框架流程,当开发者实现新pruning算法时,只需要集中精力实现pruning的逻辑即可.
